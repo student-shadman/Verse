@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noor · The 99 Beautiful Names of Allah</title>
+<link rel="stylesheet" href="ver.css">
+</head>
+<body>
+
+<header class="appbar">
+  <div class="brand">
+    <svg class="brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+      <path d="M12 2l2.9 6.9L22 11l-6.9 2.1L12 20l-3.1-6.9L2 11l7.1-2.1z"/>
+    </svg>
+    <div>
+      <div class="brand-name">Noor</div>
+      <div class="brand-sub">Asma-ul-Husna</div>
+    </div>
+  </div>
+  <nav class="tabs" aria-label="Sections">
+    <button class="tab-btn" data-view="names">Names</button>
+    <button class="tab-btn" data-view="dhikr">Dhikr</button>
+    <button class="tab-btn" data-view="quiz">Quiz</button>
+    <button class="tab-btn" data-view="memorize">Memorize</button>
+    <button class="tab-btn" data-view="journal">Journal</button>
+    <button class="tab-btn" data-view="dashboard">Progress</button>
+  </nav>
+  <div class="a11y-bar">
+    <button class="icon-btn" id="font-dec" aria-label="Decrease font size">A-</button>
+    <button class="icon-btn" id="font-inc" aria-label="Increase font size">A+</button>
+    <button class="icon-btn" id="contrast-toggle" aria-label="Toggle high contrast">◐</button>
+  </div>
+</header>
+
+<!-- ============================= NAMES VIEW ============================= -->
+<main id="view-names" class="view">
+  <section class="hero">
+    <div class="hero-arch">
+      <div class="hero-eyebrow">Today's Name</div>
+      <div class="hero-arabic" id="hero-ar"></div>
+      <div class="hero-translit" id="hero-translit"></div>
+      <div class="hero-meaning" id="hero-meaning"></div>
+      <div class="hero-reflection" id="hero-reflection"></div>
+      <div class="hero-actions">
+        <button class="btn btn-gold" id="hero-open">Read in full</button>
+        <button class="btn" id="hero-done-btn"></button>
+      </div>
+      <p class="section-sub" style="margin-top:14px" id="hero-action"></p>
+    </div>
+  </section>
+
+  <div class="star-divider"><svg viewBox="0 0 24 24" fill="currentColor" class="star-glyph"><path d="M12 1l2.6 6.2L21 8.2l-5 4.6 1.5 6.9L12 16.4 6.5 19.7 8 12.8 3 8.2l6.4-1 2.6-6.2z"/></svg></div>
+
+  <h2 class="section-title">The 99 Beautiful Names</h2>
+  <p class="section-sub">Search, filter, and tap any Name to explore its meaning, reflection, and a practical action for today.</p>
+
+  <div class="controls">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input type="text" id="search-input" placeholder="Search Arabic, transliteration, or meaning…" aria-label="Search names">
+    </div>
+    <select class="filter-select" id="category-select" aria-label="Filter by category"></select>
+    <button class="icon-btn" id="fav-filter-btn" aria-label="Show favorites only">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7.5-4.6-10-9.3C0.3 8 2 4.5 5.6 4c2-.3 3.8.6 4.9 2.3C11.6 4.6 13.4 3.7 15.4 4c3.6.5 5.3 4 3.6 7.7C16.5 16.4 12 21 12 21z"/></svg>
+    </button>
+  </div>
+
+  <div class="name-grid" id="name-grid"></div>
+
+  <p class="footnote">
+    Names, Arabic script and transliteration are cross-checked against standard Asma-ul-Husna references.
+    The enumeration of 99 Names is recorded in Jāmiʿ at-Tirmidhī (3507) and Sunan Ibn Mājah (3861); the promise
+    tied to knowing them is in Ṣaḥīḥ al-Bukhārī (2736) and Ṣaḥīḥ Muslim (2677). Some scholars note the specific
+    ordered list is a later addition to the narration rather than the Prophet ﷺ's exact wording — the Names
+    themselves are firmly rooted in the Qur'an and Sunnah regardless. Qur'an references are shown only where the
+    association is well established; where none is shown, the Name is affirmed through the broader Qur'anic and
+    prophetic tradition rather than one specific verse. This app is an educational companion, not a substitute
+    for study with a qualified teacher.
+  </p>
+</main>
+
+<!-- ============================= DHIKR VIEW ============================= -->
+<section id="view-dhikr" class="view">
+  <h2 class="section-title">Dhikr Companion</h2>
+  <p class="section-sub">A digital tasbih with daily history and streaks. Tap the bead to count.</p>
+  <div class="panel-grid">
+    <div class="card">
+      <div class="tasbih-wrap">
+        <div class="tasbih-ring">
+          <div class="fill" id="tasbih-ring-fill"></div>
+          <div style="text-align:center;position:relative;z-index:1">
+            <div class="tasbih-count" id="tasbih-count">0</div>
+            <div class="tasbih-target" id="tasbih-target">Target: 33</div>
+          </div>
+        </div>
+        <button class="tasbih-tap" id="tasbih-tap">Tap</button>
+        <button class="btn btn-ghost btn-sm" id="tasbih-reset">Reset today's count</button>
+        <div class="streak-badges" id="streak-badges"></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Common Adhkār</h3>
+      <p class="muted">Choose a target count to focus your session.</p>
+      <div class="dhikr-list" id="dhikr-preset-list"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= QUIZ VIEW ============================= -->
+<section id="view-quiz" class="view">
+  <h2 class="section-title">Quiz Mode</h2>
+  <p class="section-sub">Test your learning. Choose a mode to begin.</p>
+  <div class="chip-row">
+    <button class="mem-set-btn quiz-mode-btn active" data-mode="meaning-to-name">Meaning → Name</button>
+    <button class="mem-set-btn quiz-mode-btn" data-mode="name-to-meaning">Name → Meaning</button>
+    <button class="mem-set-btn quiz-mode-btn" data-mode="arabic-to-translit">Arabic → Transliteration</button>
+  </div>
+  <div class="card" style="margin-top:16px;max-width:560px">
+    <div class="quiz-progress"><div class="quiz-progress-fill" id="quiz-progress-fill"></div></div>
+    <div id="quiz-body"></div>
+  </div>
+</section>
+
+<!-- ============================= MEMORIZE VIEW ============================= -->
+<section id="view-memorize" class="view">
+  <h2 class="section-title">Memorization Mode</h2>
+  <p class="section-sub">Study in focused sets with spaced flashcards.</p>
+  <div class="memorize-grid" id="mem-set-buttons"></div>
+  <div style="max-width:480px">
+    <div class="flashcard" id="flashcard"></div>
+    <div class="mem-nav">
+      <button class="btn btn-ghost btn-sm" id="mem-prev">← Prev</button>
+      <span class="mem-progress-text" id="mem-progress-text"></span>
+      <button class="btn btn-ghost btn-sm" id="mem-next">Next →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= JOURNAL VIEW ============================= -->
+<section id="view-journal" class="view">
+  <h2 class="section-title">Reflection Journal</h2>
+  <p class="section-sub">Your private thoughts, stored only on this device.</p>
+  <div class="panel-grid">
+    <div class="card">
+      <h3>New reflection</h3>
+      <textarea class="modal-textarea" id="journal-input" placeholder="What did today's Name teach you?"></textarea>
+      <div style="margin-top:12px"><button class="btn btn-gold" id="journal-save">Save reflection</button></div>
+    </div>
+    <div class="card">
+      <h3>Your entries</h3>
+      <div id="journal-list"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= DASHBOARD VIEW ============================= -->
+<section id="view-dashboard" class="view">
+  <h2 class="section-title">Your Progress</h2>
+  <p class="section-sub">Track your learning journey across the app.</p>
+  <div class="stat-grid" id="stat-grid"></div>
+  <div class="star-divider"><svg viewBox="0 0 24 24" fill="currentColor" class="star-glyph"><path d="M12 1l2.6 6.2L21 8.2l-5 4.6 1.5 6.9L12 16.4 6.5 19.7 8 12.8 3 8.2l6.4-1 2.6-6.2z"/></svg></div>
+  <h3 style="font-family:var(--font-display);color:var(--parchment)">Achievements</h3>
+  <div class="streak-badges" id="achievements"></div>
+</section>
+
+<!-- ============================= MODAL ============================= -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="modal-close" id="modal-close" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="modal-head">
+      <div class="modal-num" id="modal-num"></div>
+      <div class="modal-ar" id="modal-ar"></div>
+      <div class="modal-tl" id="modal-tl"></div>
+      <div class="modal-mn" id="modal-mn"></div>
+      <div class="modal-cat" id="modal-cat"></div>
+    </div>
+    <div class="modal-actions">
+      <button class="icon-btn" id="modal-fav" aria-label="Favorite">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7.5-4.6-10-9.3C0.3 8 2 4.5 5.6 4c2-.3 3.8.6 4.9 2.3C11.6 4.6 13.4 3.7 15.4 4c3.6.5 5.3 4 3.6 7.7C16.5 16.4 12 21 12 21z"/></svg>
+      </button>
+      <button class="icon-btn" id="modal-copy" aria-label="Copy">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 012-2h10"/></svg>
+      </button>
+      <button class="icon-btn" id="modal-share" aria-label="Share">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/></svg>
+      </button>
+    </div>
+    <div class="modal-block"><h4>Meaning</h4><p id="modal-short"></p></div>
+    <div class="modal-block"><h4>Reflection on the Name</h4><p id="modal-deep"></p></div>
+    <div class="modal-block" id="modal-ref-wrap"><h4>Qur'an Reference</h4><p class="modal-ref" id="modal-ref"></p></div>
+    <div class="modal-block"><h4>Reflect</h4><p id="modal-reflection"></p></div>
+    <div class="modal-block"><h4>Today's Action</h4><p id="modal-action"></p></div>
+    <div class="modal-block"><h4>Your Notes</h4><textarea class="modal-textarea" id="modal-notes" placeholder="Write a private note about this Name…"></textarea></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="data.js"></script>
+<script src="ver.js"></script>
+</body>
+</html>
